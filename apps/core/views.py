@@ -10,12 +10,18 @@ from django.http import HttpResponseRedirect
 
 
 def home(request):
+    """
+    Retorna a pagina inicial do projeto.
+    """
     return render(request, 'index.html')
 
 
 def criarrelatorio(request):
+    """
+        Responsável por chamar as funções de ETL para criação do relatório de IR e devolver um Excel com os dados tratados.
+    """
     ano = request.POST.get("ano")
-    #print(ano)
+
     if request.method == 'POST':
         dados = File(request.FILES['excel_file'])
         if not dados.name.endswith('xlsx'):

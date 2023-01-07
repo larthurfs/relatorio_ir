@@ -4,6 +4,13 @@ import pandas as pd
 
 
 def criar_planilha(df, dados, output):
+    """
+
+    :param df: Recebe um df pandas para ser utilizado como dados
+    :param dados: planilha excel
+    :param output:
+    :return: Relatório para utilização no imposto de renda
+    """
     wb = xls.Workbook(output)
 
     pesquisa = wb.add_worksheet("pesquisa")
@@ -194,6 +201,9 @@ def plan_aux(aux, dados, wb):
 
 
 def criar_planilha_modelo(output):
+    """
+    Retorna o modelo de excel para input de dados a serem tratadosa e
+    """
     wb = xls.Workbook(output)
 
     movimentacao = wb.add_worksheet("Movimentação")

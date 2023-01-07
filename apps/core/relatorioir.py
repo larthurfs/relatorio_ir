@@ -1,6 +1,14 @@
 import pandas as pd
 
 def etl_movimentacao(ano, movimentacao, subscricao):
+    """
+    Recebe os dados pré processados da função relatorioir e faz toda a transformação
+
+    :param ano: Valor com os quatros dígitos do ano como inteiro.
+    :param movimentacao: DF pandas
+    :param subscricao: DF pandas
+    :return:retorna um DF pandas com os dados tratados
+    """
     movimentacao['Produto'] = movimentacao['Produto'].str.split(' ', expand=True)[0]
     movimentacao = movimentacao[
         (movimentacao['Movimentação'] == 'Rendimento') |
@@ -18,6 +26,12 @@ def etl_movimentacao(ano, movimentacao, subscricao):
 
 
 def relatorioir(ano, dados):
+    """
+    Pré processamento do arquivo excel e chama a função elt_movimentacao
+    :param ano: Valor com os quatros dígitos do ano como inteiro.
+    :param dados: Excel
+    :return: retorna um df para ser utilizado na função criar_planilha
+    """
     subscricao = pd.read_excel(dados, 'Subscrição')
     movimentacao = pd.read_excel(dados, 'Movimentação')
     cnpj_nome = pd.read_excel(dados, 'cnpj')
