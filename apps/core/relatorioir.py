@@ -21,7 +21,7 @@ def etl_movimentacao(ano, movimentacao, subscricao):
     movimentacao['Data'] = movimentacao['Data'].dt.year
     for k, v in zip(subscricao['Ativo'], subscricao['Cod']):
         movimentacao.loc[movimentacao['Produto'] == v, 'Produto'] = k
-
+    print('aqui movimentacao')
     return movimentacao
 
 
@@ -40,4 +40,5 @@ def relatorioir(ano, dados):
 
     relatorio = movimentacao.groupby(['Produto', 'Movimentação', 'Data'], as_index=False).sum()
     relatorio = relatorio.merge(cnpj_nome, left_on='Produto', right_on='Ativo', how='left').drop('Ativo', axis=1)
+    print('aqui relatorio')
     return relatorio

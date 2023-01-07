@@ -2,8 +2,8 @@ import xlsxwriter as xls
 import xlsxwriter.utility as xl_util
 import pandas as pd
 
-
 def criar_planilha(df, dados, output):
+    print('aqui excel')
     """
 
     :param df: Recebe um df pandas para ser utilizado como dados

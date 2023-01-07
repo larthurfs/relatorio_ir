@@ -32,9 +32,9 @@ def criarrelatorio(request):
         output = io.BytesIO()
         try:
             df = relatorioir(int(ano), dados)
-            criar_planilha(df, dados, output, request)
+            criar_planilha(df, dados, output)
         except:
-            erro = 'Verifique os nomes das abas de sua planilha! Subscrição, Movimentação e cnpj'
+            erro = 'Verifique se a sua planilha está seguindo o modelo fornecido'
             messages.error(request, erro)
 
             return render(request, 'index.html')
