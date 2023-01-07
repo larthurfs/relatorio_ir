@@ -6,7 +6,7 @@ import io
 
 from apps.core.excel import criar_planilha, criar_planilha_modelo
 from apps.core.relatorioir import relatorioir
-from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -15,7 +15,7 @@ def home(request):
     """
     return render(request, 'index.html')
 
-
+@csrf_exempt
 def criarrelatorio(request):
     """
         Responsável por chamar as funções de ETL para criação do relatório de IR e devolver um Excel com os dados tratados.
